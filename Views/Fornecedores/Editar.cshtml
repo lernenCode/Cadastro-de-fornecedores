@@ -1,0 +1,35 @@
+@model FornecedoresModel
+
+@{
+    ViewData["Title"] = "Editar Fornecedor";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Editar Fornecedor</h1>
+</div>
+
+    <form asp-controller="Fornecedores" asp-action="Alterar" method="post">
+      <input type="hidden" asp-for="Id">
+      <div class="mb-3">
+            <label for="name" class="form-label">Nome:</label>
+            <input maxlength="100" type="text" asp-for="Nome" class="form-control" id="exampleInputPassword1" placeHolder = "Digite o nome do fornecedor">
+        </div>
+
+        <div class="mb-3">
+            <label for="tel" class="form-label">CNPJ:</label>
+            <input maxlength="14" pattern="[0-9]*" type="text" asp-for="CNPJ" class="form-control" id="exampleInputPassword1" placeHolder = "Digite o CNPJ do fornecedor  (Somente números)">
+        </div>
+
+        <div class="mb-3">
+            <label for="tel" class="form-label">Especialidade:</label>
+            <select class="form-select" aria-label="Default select example"  asp-for="Especialidade">
+                <option selected>Selecione o tipo de especialidade</option>
+                <option value="Comércio">Comércio</option>
+                <option value="Serviço">Serviço</option>
+                <option value="Indústria">Indústria</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+         <a class="btn btn-primary" asp-controller="Fornecedores" asp-action="Index" role="button">Cancelar</a>
+    </form>

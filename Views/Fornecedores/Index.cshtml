@@ -1,0 +1,50 @@
+@model List<FornecedoresModel>
+
+@{
+    ViewData["Title"] = "Listagem de Fornecedores";
+}
+
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-success" asp-controller="Fornecedores" asp-action="Criar" role="button">Adicionar Novo Fornecedor</a>
+    </div>
+    <br>
+    <h1 class="display-4">Listagem de Fornecedores</h1>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Especialidade</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (FornecedoresModel Fornecedores in Model)
+                {
+                    <tr>
+                    <th scope="row">@Fornecedores.Id</th>
+                    <td>@Fornecedores.Nome</td>
+                    <td>@Fornecedores.CNPJ</td>
+                    <td>@Fornecedores.Especialidade</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary" asp-route-id="@Fornecedores.Id" asp-controller="Fornecedores" asp-action="Editar" role="button">Editar</a>
+                                <a class="btn btn-danger" asp-route-id="@Fornecedores.Id" asp-controller="Fornecedores" asp-action="ApagarConfirmacao" role="button">Remover</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+</div>

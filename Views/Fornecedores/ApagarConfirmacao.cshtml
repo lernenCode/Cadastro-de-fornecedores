@@ -1,0 +1,12 @@
+@model FornecedoresModel
+
+@{
+    ViewData["Title"] = "Remover Fornecedor";
+}
+
+
+<div class="text-center">
+    <h3 class="display-4">Deseja realmente apagar o Fornecedor (@Model.Nome) ?</h1>
+    <a class="btn btn-primary btn-block" asp-controller="Fornecedores" asp-action="Index" role="button">Cancelar</a>
+    <a class="btn btn-danger btn-block" asp-controller="Fornecedores" asp-action="Apagar" asp-route-id="@Model.Id" role="button">Confirmar</a>
+</div>
